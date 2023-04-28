@@ -36,5 +36,5 @@ build/
 
 ### Mac OS ###
 .DS_Store!/null
-!/allure-results/
-!/.idea/
+!**/allure-results/
+!**/.idea/
