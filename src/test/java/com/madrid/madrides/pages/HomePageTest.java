@@ -18,10 +18,8 @@ public class HomePageTest extends BaseTest {
     @Test(priority = 1,groups = "homePageGroup")
     public void madridESWorkflow() throws InterruptedException{
         System.out.println("Executing Test 1 of HomePage\n");
-
-        System.out.println("\n ********** Executing Step 1 **********");
-        homePage.navigateTo();
-
+        homePage.navigateToHomepage();
+        homePage.clickAcceptCookies();
         System.out.println("Finishing Test 1 of HomePage\n");
     }
 

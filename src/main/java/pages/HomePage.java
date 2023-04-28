@@ -28,16 +28,12 @@ public class HomePage extends BasePage{
         super(driver);
         PageFactory.initElements(driver,this);
     }
-    public void navigateTo(){
+    public void navigateToHomepage(){
         visitWebPage("https://www.madrid.es/portal/site/munimadrid");
     }
 
-    public void clickAcceptCookies(){
-        driver.switchTo().frame(cookiesIframe);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOf(acceptButton));
-        acceptButton.click();
-        driver.switchTo().defaultContent();
+    public void clickAcceptCookies() throws InterruptedException {
+        waitAndClickElement(acceptButton);
     }
 
     public String getTwitterIframeTitle (){
