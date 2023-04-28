@@ -15,11 +15,15 @@ public class HomePageTest extends BaseTest {
         this.homePage = new HomePage(driver);
     }
 
-    @Test(priority = 1,groups = "homePageGroup")
-    public void madridESWorkflow() throws InterruptedException{
+    @Test(priority = 1)
+    public void test1ValidateTwitterIframeTitle() throws InterruptedException{
         System.out.println("Executing Test 1 of HomePage\n");
         homePage.navigateToHomepage();
+        waitTime();
         homePage.clickAcceptCookies();
+        waitTime();
+        homePage.validateTwitterIframeTitle();
+        waitTime();
         System.out.println("Finishing Test 1 of HomePage\n");
     }
 

@@ -12,7 +12,7 @@ import java.time.Duration;
 public class HomePage extends BasePage{
     protected WebDriver driver;
 
-    @FindBy(id = "twitter-widget-0")
+    @FindBy(css = "iframe#twitter-widget-0")
     private WebElement twitterIframe;
 
     @FindBy(xpath = "//span[contains(text(),'Tweets')]")
@@ -21,25 +21,26 @@ public class HomePage extends BasePage{
     @FindBy(css = "button#iam-cookie-control-modal-action-primary")
     private WebElement acceptButton;
 
-    @FindBy(css = ".pace-done")
-    private WebElement cookiesIframe;
-
     public HomePage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver,this);
     }
     public void navigateToHomepage(){
         visitWebPage("https://www.madrid.es/portal/site/munimadrid");
+        validateURL("https://www.madrid.es/portal/site/munimadrid");
     }
 
     public void clickAcceptCookies() throws InterruptedException {
         waitAndClickElement(acceptButton);
     }
 
-    public String getTwitterIframeTitle (){
-        driver.switchTo().frame(twitterIframe);
-        String titleText = iframeTitle.getText();
-        return titleText;
+    public void validateTwitterIframeTitle (){
+        waitForElementVisibility(twitterIframe);
+        switchToIframe(twitterIframe);
+        waitForElementVisibility(iframeTitle);
+        validateTextHardAssert(iframeTitle,"Tweets de @MADRID");
+        System.out.println("Extracted title from Twitter Iframe: "+iframeTitle.getAttribute("innerText")+"\n");
+        switchToDefaultIframe();
     }
 
 }

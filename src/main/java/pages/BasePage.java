@@ -34,6 +34,14 @@ public class BasePage {
         driver.navigate().to(url);
     }
 
+    protected void switchToIframe(WebElement element){
+        driver.switchTo().frame(element);
+    }
+
+    protected void switchToDefaultIframe(){
+        driver.switchTo().defaultContent();
+    }
+
     protected void waitForElementVisibility(WebElement element) {
         try {
             wait.until(ExpectedConditions.visibilityOf(element));
@@ -51,14 +59,14 @@ public class BasePage {
         Assert.assertEquals(expectedURL, driver.getCurrentUrl(), "The URL is not the same");
     }
 
-    protected void validateText(WebElement element, String buttonText) {
+    protected void validateText(WebElement element, String textToValidate) {
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(buttonText, element.getText(), "The text is not the same");
+        softAssert.assertEquals(textToValidate, element.getText(), "The text is not the same");
         softAssert.assertAll();
     }
 
-    protected void validateTextHardAssert(WebElement element, String expectedText) {
-        Assert.assertEquals(element.getAttribute("innerText"), expectedText, "The page number is not correct");
+    protected void validateTextHardAssert(WebElement element, String textToValidate) {
+        Assert.assertEquals(element.getAttribute("innerText"), textToValidate, "The page number is not correct");
     }
 
     protected void verifyIfTextIsPresentOnWebPage(List<WebElement> elements) {
