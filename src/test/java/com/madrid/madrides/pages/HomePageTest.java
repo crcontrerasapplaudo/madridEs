@@ -23,7 +23,7 @@ public class HomePageTest extends BaseTest {
         Assertion assertTitle  = new Assertion();
 
         System.out.println("\n ********** Executing Step 1 **********");
-//        madridESPage.navigateTo();
+        homePage.navigateTo();
 //        madridESPage.clickAcceptCookies();
 //        titleText = madridESPage.getTwitterIframeTitle();
 //        assertTitle.assertEquals("Tweets de @MADRID", titleText);

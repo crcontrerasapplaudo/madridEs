@@ -29,8 +29,7 @@ public class HomePage extends BasePage{
         PageFactory.initElements(driver,this);
     }
     public void navigateTo(){
-        driver.manage().window().maximize();
-        driver.get("https://www.madrid.es/portal/site/munimadrid");
+        visitWebPage("https://www.madrid.es/portal/site/munimadrid");
     }
 
     public void clickAcceptCookies(){
